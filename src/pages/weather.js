@@ -5,13 +5,27 @@ const Weather = () => {
 
     const [searchWeather, setSearchWeather] = useState("")
 
-    const {data, error, isPending} = useHoroscop(`https://api.openweathermap.org/data/2.5/weather?q=${searchWeather}&appid=8e352e5fc385213cf324146681cff4bb`)
+    
+    
+    const {data, error, isPending} = useHoroscop(`https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=8e352e5fc385213cf324146681cff4bb`)
+    const submit = (e) =>{
+        e.preventDefault();
+        
+        const queryParams = new URLSearchParams(searchWeather);
+        const query = queryParams.get("q");
+        
+    
+    }
 
-   
 
     return ( 
         <div>
-           <input onChange={(e) => setSearchWeather(e.target.value)} type="search" name="" id="" />
+          <form onSubmit={submit}>
+             <input onChange={(e) => setSearchWeather(e.target.value)} type="text" />
+              <button>Search</button>
+          </form>
+            {error && <p>{error}</p>}
+
         </div>
      );
 }

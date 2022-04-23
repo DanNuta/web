@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/home";
 import Horoscop from "./pages/horoscop";
 import HoroscopSelf from "./pages/horoscopSelf";
+import Weather from "./pages/weather";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route path="/" element={<Home/>}/>
       <Route path="/horoscop" element={<Horoscop/>}/>
       <Route path="/horoscop/:id" element={<HoroscopSelf/>}/>
+      <Route path="/weather" element={<Weather/>}/>
     </Routes>
    
    </BrowserRouter>

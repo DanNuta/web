@@ -53,7 +53,7 @@ const Weather = () => {
     return ( 
         <div>
           <form onSubmit={submit}>
-             <input onChange={(e) => setSearchWeather(e.target.value)} type="text" value={searchWeather} />
+             <input onChange={(e) => setSearchWeather(e.target.value)} type="text" value={searchWeather} placeholder="ex: Budapesta" />
               <button>Search</button>
           </form>
 
@@ -61,10 +61,20 @@ const Weather = () => {
 
           {data && <div>
                    <h2>{data.name}</h2>
+                   <h3>{data.weather[0].main}</h3>
                    <p>{data.weather[0].description}</p>
+                   {data.weather[0].icon === "01d" && <img src="https://img.icons8.com/office/16/000000/summer.png"/>}
+                   {data.weather[0].icon === "02d" && <img src="https://img.icons8.com/office/16/000000/partly-cloudy-day--v1.png"/>}
+                   {data.weather[0].icon === "03d" && <img src="https://img.icons8.com/office/16/000000/clouds.png"/>}
+                   {data.weather[0].icon === "10d" && <img src="https://img.icons8.com/office/16/000000/rain.png"/>}
+                   {data.weather[0].icon === "04d" && <img src="https://img.icons8.com/clouds/100/000000/clouds.png"/>}
+
+
+
 
               
                    </div>}
+
 
 
 

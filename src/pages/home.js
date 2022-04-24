@@ -1,10 +1,12 @@
-
-
+import {useState, useEffect} from "react";
+import HomeLocation from "./home_location";
 
 const Home = () => {
+
+    
     return ( 
         <div>
-            <h1>Home page</h1>
+            <HomeLocation/>
         </div>
      );
 }

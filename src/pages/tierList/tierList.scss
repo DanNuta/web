@@ -1,0 +1,18 @@
+.tier_list{
+    border: 1px solid black;
+    margin-top: 5px;
+    position: relative;
+    height: 50px;
+    
+
+
+    .category_tier_list{
+        width: 100px;
+        height: 50px;
+        position: absolute;
+        background-color: green;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

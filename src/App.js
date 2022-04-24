@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/home";
 import Horoscop from "./pages/horoscop";
 import HoroscopSelf from "./pages/horoscopSelf";
-import TierList from "./pages/tierList";
+import TierList from "./pages/tierList/tierList";
 import Weather from "./pages/weather";
 
 function App() {

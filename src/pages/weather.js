@@ -8,16 +8,34 @@ const Weather = () => {
 
     const [url, setUrl] = useState("");
 
+    const [data, setData] = useState("");
+    const [error, setError] = useState(null);
+    const [isPending, setIsPending] = useState(false)
 
-    useEffect(() =>{        
 
-    }, [])
-   
+
+
+    useEffect(() =>{
+
+        const wather = async () =>{
     
+            try{
+                setIsPending(true)
+                const rez = await fetch(url)
+                const element = await rez.json();
+                setData(element)
+                setIsPending(false)
     
+            }catch(e){
+                setError(e.message);
+                setIsPending(false)
     
+            }
+        }
+        wather()
+    }, [url])
     
-    //https://api.openweathermap.org/data/2.5/weather?q=${searchCity}&appid=8e352e5fc385213cf324146681cff4bb
+    console.log("data",data)
     
     
     
@@ -27,7 +45,7 @@ const Weather = () => {
         setUrl(`https://api.openweathermap.org/data/2.5/weather?q=${searchWeather}&appid=8e352e5fc385213cf324146681cff4bb`)
     }
     
-    console.log(data)
+    
 
     return ( 
         <div>
@@ -36,11 +54,17 @@ const Weather = () => {
               <button>Search</button>
           </form>
 
+          {isPending && <p>Loading...</p>}
 
-          {data && <p>{data}</p>}
-          {error && <p>{error}</p>}
-            
+          {data && <div>
+                   <h2>{data.name}</h2>
+                   
+              
+                   </div>}
 
+
+
+    
         </div>
      );
 }

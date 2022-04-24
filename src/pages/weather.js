@@ -42,7 +42,10 @@ const Weather = () => {
     const submit = (e) =>{
         e.preventDefault();
         
+        
         setUrl(`https://api.openweathermap.org/data/2.5/weather?q=${searchWeather}&appid=8e352e5fc385213cf324146681cff4bb`)
+    
+        setSearchWeather("")
     }
     
     
@@ -50,7 +53,7 @@ const Weather = () => {
     return ( 
         <div>
           <form onSubmit={submit}>
-             <input onChange={(e) => setSearchWeather(e.target.value)} type="text" />
+             <input onChange={(e) => setSearchWeather(e.target.value)} type="text" value={searchWeather} />
               <button>Search</button>
           </form>
 
@@ -58,7 +61,8 @@ const Weather = () => {
 
           {data && <div>
                    <h2>{data.name}</h2>
-                   
+                   <p>{data.weather[0].description}</p>
+
               
                    </div>}
 

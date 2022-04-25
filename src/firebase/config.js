@@ -19,6 +19,6 @@ const firebaseConfig = {
 
   const webFirestore = firebase.firestore()
   const webAuth = firebase.auth();
-  const webStorege = firebase.storege();
+  const webStorege = firebase.storage().ref();
 
-  export default {webFirestore, webAuth}
+  export default {webFirestore, webAuth, webStorege};

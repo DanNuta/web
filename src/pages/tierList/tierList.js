@@ -1,5 +1,6 @@
 import {useState} from "react";
 import "./tierList.scss";
+import webStorege from "../../firebase/config";
 
 const TierList = () => {
 
@@ -29,12 +30,30 @@ const TierList = () => {
 
         setThumbnail(file)
         setError(null)
-
-        
-
         console.log(file)
+    }
+
+
+   async function storegeFile(){
+       
+         try{
+            const thumbnailPath = `thumbnails/${thumbnail.name}`;
+            const images = await webStorege.ref(thumbnailPath).put(thumbnail);
+         }catch(e){
+             console.log(e.message)
+         }
 
     }
+
+
+    const submit = (e) =>{
+        e.preventDefault();
+
+        storegeFile()
+
+    }
+
+    storegeFile()
     return ( 
         <div>
             {tips.reverse().map((element, i) =>(
@@ -46,8 +65,9 @@ const TierList = () => {
             ))}
 
 
-          <form className="form">
+          <form onSubmit={submit} className="form">
               <input onChange={fileSelect} type="file" />
+              <button>Add</button>
           </form>
 
           {error && <p>{error}</p>}

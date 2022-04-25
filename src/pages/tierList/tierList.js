@@ -1,6 +1,7 @@
 import {useState} from "react";
 import "./tierList.scss";
 import webStorege from "../../firebase/config";
+import webFirestore from "../../firebase/config";
 
 const TierList = () => {
 
@@ -34,13 +35,15 @@ const TierList = () => {
     }
 
 
+    console.log(webFirestore)
+
    async function storegeFile(){
-       
          try{
             const thumbnailPath = `thumbnails/${thumbnail.name}`;
-            const images = await webStorege.ref(thumbnailPath).put(thumbnail);
+             webStorege.ref(thumbnailPath).put(thumbnail);
          }catch(e){
-             console.log(e.message)
+             console.log("Eroare",e.message)
+             setError(e.message)
          }
 
     }
@@ -53,7 +56,7 @@ const TierList = () => {
 
     }
 
-    storegeFile()
+    
     return ( 
         <div>
             {tips.reverse().map((element, i) =>(
